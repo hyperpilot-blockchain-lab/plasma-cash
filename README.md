@@ -1,1 +1,2 @@
-# plasma-cash
+# Plasma Cash
+
