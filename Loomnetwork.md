@@ -12,4 +12,26 @@
 git clone git@github.com:loomnetwork/plasma-erc721.git
 cd plasma
 env LDFLAGS="-L$(brew --prefix openssl)/lib" CFLAGS="-I$(brew --prefix openssl)/include" pip install -r requreiments.txt
+cd ../server
+npm install
+cd ../
+./integration_test.sh
 ```
+
+## Code Analysis
+
+### Folder: plasma_cache
+
+* Spars Merkle Tree is declared in the folder `plasma_cache/utils`. Including the following methods:
+    * create_default_nodes
+    * create_tree
+    * create_merkle_proof
+    * verify
+
+* In the `contract_bind/base` folder, an abstract class of smart contract is declared here. It is the root class / contract of Plasma Cash and ERC 721.
+    * ERC 721 owns much less properties in contrast to Plasma Cash:
+        * register
+        * transfer
+        * deposit
+        * balance_of
+
