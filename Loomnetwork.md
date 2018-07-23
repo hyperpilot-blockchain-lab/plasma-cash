@@ -35,3 +35,8 @@ cd ../
         * deposit
         * balance_of
 
+## References (toolchain, installation, related impl)
+
+* [vyper-erc721](https://github.com/maurelian/erc721-vyper)
+* [install vyper using pyenv on Mac](https://www.codementor.io/mandarvaze/how-to-install-vyper-using-pyenv-and-virtualenv-on-macos-jz2ghksd4)
+* [vyper tools / resources](https://github.com/ethereum/vyper/wiki/Vyper-tools-and-resources)
