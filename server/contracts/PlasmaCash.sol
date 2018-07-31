@@ -1,6 +1,6 @@
 pragma solidity ^0.4.24;
 
-import "token/ERC721/ERC721Receiver.sol";
+import "./token/ERC721/ERC721Receiver.sol";
 
 contract PlasmaCash is ERC721Receiver {
   function onERC721Received(address _from, uint256 _uid, bytes)
