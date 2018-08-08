@@ -7,11 +7,13 @@
     "test": "test"
   },
   "dependencies": {
+    "babel-polyfill": "^6.26.0",
+    "babel-register": "^6.26.0",
     "eth-gas-reporter": "^0.1.9",
     "ganache-cli": "^6.1.3",
     "growl": "^1.10.5",
     "homedir": "^0.6.0",
-    "openzeppelin-solidity": "1.10.0",
+    "openzeppelin-solidity": "1.11.0",
     "rlp": "^2.0.0",
     "solium": "^1.1.7",
     "truffle": "^4.1.11",

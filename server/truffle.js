@@ -15,8 +15,8 @@
 
 const HDWalletProvider = require('truffle-hdwallet-provider')
 const PrivateKeyProvider = require('truffle-privatekey-provider')
-// require('babel-register');
-// require('babel-polyfill');
+require('babel-register');
+require('babel-polyfill');
 
 const mnemonic = 'stumble story behind hurt patient ball whisper art swift tongue ice alien';
 
