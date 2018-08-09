@@ -2,24 +2,28 @@ pragma solidity ^0.4.24;
 
 import "./token/ERC721/ERC721Receiver.sol";
 
-
 contract PlasmaCash is ERC721Receiver {
-  // Storage
   struct Exit {
     bool finalized;
   }
 
   enum TokenState {
-    DEPOSITED, EXITING, CHALLENGED, FINALIZED
+    UNINITIALIZED, DEPOSITED, EXITING, CHALLENGED, FINALIZED
   }
 
-  mapping (uint64 => Token) tokens;
   struct Token {
     uint64 tokenId;
     address owner;
     Exit exit;
     TokenState state;
   }
+
+  // Storage
+  // Tokens hold all the ERC271 tokens that are deposited to this chain
+  mapping (uint64 => Token) tokens;
+  // ChildChain holds each block and the submitted transaction root from the validator
+  mapping (uint256 => bytes32) childChain;
+  uint currentBlockNumber;
 
   function onERC721Received(address _from, uint256 _uid, bytes)
     public
@@ -42,6 +46,12 @@ contract PlasmaCash is ERC721Receiver {
     require(token.owner == msg.sender, "Invalid owner attempting to withdraw");
     require(token.state == TokenState.FINALIZED, "Token is not yet finalized");
     // TOOD: Transfer the ERC721 token to the sender
+  }
+
+  function submitBlock(bytes32 transactionRoot, uint256 blockNumber) public {
+    require(blockNumber == currentBlockNumber + 1);
+    childChain[blockNumber] = transactionRoot;
+    currentBlockNumber += 1;
   }
 
   // Exiting
