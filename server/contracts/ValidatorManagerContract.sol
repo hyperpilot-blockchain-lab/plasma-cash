@@ -2,6 +2,7 @@ pragma solidity ^0.4.24;
 
 import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
 
+
 // FIXME this file is copied from loomnetwork/erc-721. Should add a new document to explain the
 // functionality of this file.
 contract ValidatorManagerContract is Ownable {
