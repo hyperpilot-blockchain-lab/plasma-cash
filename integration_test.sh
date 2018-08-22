@@ -20,4 +20,4 @@ echo 'Launched flask' $flask_pid
 
 sleep 3
 
-python demo.py
+python simple_demo.py

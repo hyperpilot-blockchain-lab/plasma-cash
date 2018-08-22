@@ -3,7 +3,6 @@ from config import plasma_config
 from contract_binds.erc721 import ERC721
 from contract_binds.plasma_cash import PlasmaCash
 
-
 class DependencyContainer(object):
     def __init__(self):
         self._child_chain = None
@@ -43,6 +42,5 @@ class DependencyContainer(object):
         if self._child_chain is None:
             self._child_chain = ChildChain(self.root_chain)
         return self._child_chain
-
 
 container = DependencyContainer()

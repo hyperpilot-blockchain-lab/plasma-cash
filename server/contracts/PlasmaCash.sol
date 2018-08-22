@@ -2,7 +2,6 @@ pragma solidity ^0.4.24;
 
 import "./token/ERC721/ERC721Receiver.sol";
 
-
 contract PlasmaCash is ERC721Receiver {
     struct Exit {
         bool finalized;
@@ -78,6 +77,10 @@ contract PlasmaCash is ERC721Receiver {
         currentBlockNumber += 1;
     }
 
+    function getBlock(uint256 blockNumber) public {
+      return childChain[blockNumber];
+    }
+
     function finalizeExit(uint64 tokenId) public {
         // We need to check for the specific exit slot, to make sure the coin:
         // 1. Started to exit and has not already exited
@@ -101,7 +104,7 @@ contract PlasmaCash is ERC721Receiver {
         token.state = TokenState.EXITING;
     }
 
-    function deposit(address from, uint64 uid) private {
+    function deposit(address from, uint64 uid) public {
         Token memory token;
         token.tokenId = uid;
         token.owner = from;

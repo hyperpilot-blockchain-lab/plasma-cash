@@ -34,10 +34,8 @@ class ChildChain(object):
         ''' Called by event watcher and creates a deposit block '''
         slot = event['args']['slot']
         blknum = int(event['args']['blockNumber'])
-        # Currently, denomination is always 1. This may change in the future.
-        denomination = event['args']['denomination']
         depositor = event['args']['from']
-        deposit_tx = Transaction(slot, 0, denomination, depositor)
+        deposit_tx = Transaction(slot, 0, depositor)
 
         # create a new plasma block on deposit
         deposit_block = Block([deposit_tx])

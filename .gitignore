@@ -5,3 +5,4 @@ __pycache__
 .pytest_cache
 server/truffle_dev_contracts.log
 server/ganache_run.log
+*.pyc

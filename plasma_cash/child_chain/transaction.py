@@ -11,11 +11,9 @@ from .exceptions import InvalidTxSignatureException
 
 
 class Transaction(rlp.Serializable):
-
     fields = [
         ('uid', big_endian_int),
         ('prev_block', big_endian_int),
-        ('denomination', big_endian_int),
         ('new_owner', ethereum.utils.address),
         ('signature', big_endian_int),
     ]
@@ -24,13 +22,11 @@ class Transaction(rlp.Serializable):
         self,
         uid: BigEndianInt,
         prev_block: BigEndianInt,
-        denomination: BigEndianInt,
         new_owner: BigEndianInt,
         signature: ByteString = b'\x00' * 65,
     ):
         self.uid = uid
         self.prev_block = prev_block
-        self.denomination = denomination
         self.new_owner = ethereum.utils.normalize_address(new_owner)
         self.signature = signature
         self.spent = False  # not part of the rlp
@@ -56,6 +52,5 @@ class Transaction(rlp.Serializable):
 
     def sign(self, key):
         self.signature = sign(self.hash, key)
-
 
 UnsignedTransaction = Transaction.exclude(['signature'])
